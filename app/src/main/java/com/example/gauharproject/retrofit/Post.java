@@ -6,8 +6,8 @@ public class Post {
     @SerializedName("success")
     private boolean success;
     ////login
-    @SerializedName("token")
-    private String token;
+    @SerializedName("user")
+    private User user;
 
     private String login;
     private String password;
@@ -16,8 +16,8 @@ public class Post {
         this.login = login;
         this.password = password;
     }
-    public String getToken(){
-        return token;
+    public User getUser(){
+        return user;
     }
     public boolean getSuccess(){
         return success;

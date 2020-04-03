@@ -3,7 +3,7 @@
     xmlns:tools = "http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height = "match_parent" android:paddingLeft= "16dp"
     android:paddingRight = "16dp"
-    android:paddingTop = "90dp"
+    android:paddingTop = "20dp"
     android:background="@color/mainBackground"
     android:paddingBottom = "16dp" tools:context = ".RegistrationActivity">
 
@@ -80,7 +80,8 @@
         android:layout_alignEnd="@+id/username"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/repeat_password"
+        android:layout_alignParentBottom="true"
+
         android:layout_marginTop="30dp"
         android:background="#E29D6F"
         android:onClick="register"

@@ -28,7 +28,7 @@ import retrofit2.Retrofit;
 import static android.content.ContentValues.TAG;
 
 public class LoginActivity extends AppCompatActivity {
-    String token = null;
+    com.example.gauharproject.retrofit.User userData;
     ProgressDialog pDialog;
     String name, pass;
     UserDb userDB;
@@ -73,9 +73,12 @@ public class LoginActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         Post postResponce = response.body();
                         if (postResponce.getSuccess()){
-                            token = postResponce.getToken();
+                            userData = postResponce.getUser();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.putExtra("token", token);
+                            intent.putExtra("name", userData.getName());
+                            intent.putExtra("surname", userData.getSurname());
+                            intent.putExtra("age", userData.getAge());
+                            intent.putExtra("favourite", userData.getFavourite());
                             startActivity(intent);
                             finish();
                         } else {
@@ -96,6 +99,12 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            pDialog.cancel();
         }
     }
 
@@ -141,9 +150,13 @@ public class LoginActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         Post postResponce = response.body();
                         if (postResponce.getSuccess()){
-                            token = postResponce.getToken();
+                            userData = postResponce.getUser();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.putExtra("token", token);
+                            intent.putExtra("name", userData.getName());
+                            intent.putExtra("surname", userData.getSurname());
+                            intent.putExtra("age", userData.getAge());
+                            intent.putExtra("favourite", userData.getFavourite());
+
                             startActivity(intent);
                             finish();
                         } else {

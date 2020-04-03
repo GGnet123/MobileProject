@@ -1,16 +1,16 @@
-package com.example.gauharproject.ui.home;
+package com.example.gauharproject.ui.categories;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class CategoriesViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public CategoriesViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is share fragment");
     }
 
     public LiveData<String> getText() {

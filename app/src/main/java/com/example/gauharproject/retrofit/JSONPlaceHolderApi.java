@@ -18,5 +18,4 @@ public interface JSONPlaceHolderApi {
     public Call<Post> register(
             @Body Post post
     );
-
 }
