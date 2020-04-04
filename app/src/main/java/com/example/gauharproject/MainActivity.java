@@ -6,9 +6,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.example.gauharproject.db.UserDb;
+import com.example.gauharproject.ui.profile.ProfileFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -26,14 +28,35 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     public ProgressDialog pDialog;
+    String name;
+    String surname;
+    String age;
+    ArrayList<String> favourite;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        name = getIntent().getStringExtra("name");
+        surname = getIntent().getStringExtra("surname");
+        age = getIntent().getStringExtra("age");
+        favourite = getIntent().getStringArrayListExtra("favourite");
+
+        Bundle bundle = new Bundle();
+        bundle.putString("name", name);
+        bundle.putString("surname", surname);
+        bundle.putString("age", age);
+        bundle.putStringArrayList("favourite", favourite);
+
+        ProfileFragment profileFragment = new ProfileFragment();
+        profileFragment.setArguments(bundle);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -57,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
     }
 
     @Override

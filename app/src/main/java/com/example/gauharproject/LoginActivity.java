@@ -18,6 +18,7 @@ import com.example.gauharproject.retrofit.JSONPlaceHolderApi;
 import com.example.gauharproject.retrofit.NetworkClient;
 import com.example.gauharproject.retrofit.Post;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -76,9 +77,10 @@ public class LoginActivity extends AppCompatActivity {
                             userData = postResponce.getUser();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.putExtra("name", userData.getName());
+                            Log.d("name", userData.getName());
                             intent.putExtra("surname", userData.getSurname());
                             intent.putExtra("age", userData.getAge());
-                            intent.putExtra("favourite", userData.getFavourite());
+                            intent.putStringArrayListExtra("favourite", userData.getFavourite());
                             startActivity(intent);
                             finish();
                         } else {
@@ -155,7 +157,7 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra("name", userData.getName());
                             intent.putExtra("surname", userData.getSurname());
                             intent.putExtra("age", userData.getAge());
-                            intent.putExtra("favourite", userData.getFavourite());
+                            intent.putStringArrayListExtra("favourite", userData.getFavourite());
 
                             startActivity(intent);
                             finish();

@@ -14,13 +14,45 @@
             android:layout_height="0sp"/>
 
         <ImageView
+            android:id="@+id/profile_img"
             android:layout_below="@+id/text_profile"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/profile_avatar">
+            android:src="@drawable/profile_avatar"/>
+        <LinearLayout
+            android:id="@+id/profile_l1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/profile_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full name: "/>
+            <TextView
+                android:id="@+id/profile_name"
+                android:text="Galym"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"/>
+            <TextView
+                android:text="Zharyssov"
+                android:id="@+id/profile_surname"
+                android:layout_below="@+id/profile_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/profile_age"
+            android:layout_below="@+id/profile_l1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age: "
+            android:layout_centerHorizontal="true"/>
 
-        </ImageView>
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@ public class User {
     private String password;
     private String name;
     private String surname;
-    private ArrayList favourite;
+    private ArrayList<String> favourite;
     private int age;
 
     public String getLogin() {
@@ -26,7 +26,7 @@ public class User {
         return surname;
     }
 
-    public ArrayList getFavourite() {
+    public ArrayList<String> getFavourite() {
         return favourite;
     }
 
