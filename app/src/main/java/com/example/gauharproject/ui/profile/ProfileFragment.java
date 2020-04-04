@@ -44,11 +44,12 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        if (getArguments() != null) {
-            name = getArguments().getString("name");
-            surname = getArguments().getString("surname");
-            age = getArguments().getString("age");
-            favourite = getArguments().getStringArrayList("favourite");
+        Bundle data = ((MainActivity) getActivity()).getData();
+        if (data != null) {
+            name = data.getString("name");
+            surname = data.getString("surname");
+            age = data.getString("age");
+            favourite = data.getStringArrayList("favourite");
 
             profile_name = root.findViewById(R.id.profile_name);
             profile_surname = root.findViewById(R.id.profile_surname);

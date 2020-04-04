@@ -1,5 +1,7 @@
 package com.example.gauharproject;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -27,6 +29,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     String surname;
     String age;
     ArrayList<String> favourite;
+    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,14 +52,11 @@ public class MainActivity extends AppCompatActivity {
         age = getIntent().getStringExtra("age");
         favourite = getIntent().getStringArrayListExtra("favourite");
 
-        Bundle bundle = new Bundle();
+        bundle = new Bundle();
         bundle.putString("name", name);
         bundle.putString("surname", surname);
         bundle.putString("age", age);
         bundle.putStringArrayList("favourite", favourite);
-
-        ProfileFragment profileFragment = new ProfileFragment();
-        profileFragment.setArguments(bundle);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -81,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+    }
+
+    public Bundle getData(){
+        return bundle;
     }
 
     @Override
