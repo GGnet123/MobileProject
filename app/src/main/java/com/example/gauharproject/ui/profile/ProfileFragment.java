@@ -58,7 +58,6 @@ public class ProfileFragment extends Fragment {
             profile_name.setText(name);
             profile_surname.setText(surname);
             profile_age.setText(age);
-
         }
         return root;
     }

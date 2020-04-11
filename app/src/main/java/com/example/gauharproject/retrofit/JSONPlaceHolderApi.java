@@ -18,4 +18,10 @@ public interface JSONPlaceHolderApi {
     public Call<Post> register(
             @Body Post post
     );
+
+    @POST("mobile/edit-profile")
+    public Call<User> editProfile(
+            @Header("token") int token,
+            @Body User user
+    );
 }

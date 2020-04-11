@@ -8,6 +8,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.example.gauharproject.db.UserDb;
+import com.example.gauharproject.retrofit.JSONPlaceHolderApi;
+import com.example.gauharproject.retrofit.NetworkClient;
+import com.example.gauharproject.retrofit.Post;
+import com.example.gauharproject.retrofit.User;
 import com.example.gauharproject.ui.profile.ProfileFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -29,34 +33,49 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     public ProgressDialog pDialog;
+    int user_id;
     String name;
     String surname;
     String age;
     ArrayList<String> favourite;
-    Bundle bundle;
+    Bundle data;
+    EditText edit_name;
+    EditText edit_surname;
+    EditText edit_age;
+    TextView profile_name;
+    TextView profile_surname;
+    TextView profile_age;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        user_id = getIntent().getIntExtra("user_id", 0);
         name = getIntent().getStringExtra("name");
         surname = getIntent().getStringExtra("surname");
         age = getIntent().getStringExtra("age");
         favourite = getIntent().getStringArrayListExtra("favourite");
 
-        bundle = new Bundle();
-        bundle.putString("name", name);
-        bundle.putString("surname", surname);
-        bundle.putString("age", age);
-        bundle.putStringArrayList("favourite", favourite);
+        data = new Bundle();
+        data.putInt("user_id", user_id);
+        data.putString("name", name);
+        data.putString("surname", surname);
+        data.putString("age", age);
+        data.putStringArrayList("favourite", favourite);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -90,7 +109,78 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public Bundle getData(){
-        return bundle;
+        return data;
+    }
+
+    public void setData(String name, String surname, int age){
+        data.putString("name", name);
+        data.putString("surname", surname);
+        data.putInt("age", age);
+    }
+
+    public void Edit(View view){
+        Button btn = findViewById(R.id.edit_btn);
+
+        if (btn.getText().toString().equals("save")){
+            setData(edit_name.getText().toString(), edit_surname.getText().toString(), Integer.parseInt(edit_age.getText().toString()));
+
+            Retrofit retrofit = NetworkClient.getRetrofitClient();
+            JSONPlaceHolderApi jp = retrofit.create(JSONPlaceHolderApi.class);
+
+            User user = new User(data.getString("name"), data.getString("surname"), data.getInt("age"));
+
+            Call<User> call = jp.editProfile(data.getInt("user_id"), user);
+
+            call.enqueue(new Callback<User>() {
+                @Override
+                public void onResponse(Call<User> call, Response<User> response) {
+                    if (response.isSuccessful()){
+                        Log.d("succ", "true");
+                        profile_name.setText(data.getString("name"));
+                        profile_surname.setText(data.getString("surname"));
+                        profile_age.setText(data.getInt("age")+"");
+                        ChangeView();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<User> call, Throwable t) {
+
+                }
+            });
+        } else {
+            ChangeView();
+        }
+
+        if (btn.getText().toString().equals("save")) {
+            btn.setText("edit");
+        } else {
+            btn.setText("save");
+        }
+    }
+
+    private void ChangeView(){
+        profile_name = findViewById(R.id.profile_name);
+        profile_surname = findViewById(R.id.profile_surname);
+        profile_age = findViewById(R.id.profile_age);
+
+        edit_name = findViewById(R.id.edit_name);
+        edit_surname = findViewById(R.id.edit_surname);
+        edit_age = findViewById(R.id.edit_age);
+
+        int visibilityTextView = edit_name.getVisibility();
+        int visibilityEditView = profile_name.getVisibility();
+
+        Log.d("textview", visibilityTextView+"");
+        Log.d("editview", visibilityEditView+"");
+
+        profile_name.setVisibility(visibilityTextView);
+        profile_surname.setVisibility(visibilityTextView);
+        profile_age.setVisibility(visibilityTextView);
+
+        edit_name.setVisibility(visibilityEditView);
+        edit_surname.setVisibility(visibilityEditView);
+        edit_age.setVisibility(visibilityEditView);
     }
 
     @Override

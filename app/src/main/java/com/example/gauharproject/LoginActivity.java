@@ -77,9 +77,10 @@ public class LoginActivity extends AppCompatActivity {
                             userData = postResponce.getUser();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.putExtra("name", userData.getName());
-                            Log.d("name", userData.getName());
                             intent.putExtra("surname", userData.getSurname());
                             intent.putExtra("age", userData.getAge());
+                            intent.putExtra("user_id", userData.getId());
+                            Log.d("user_id", userData.getId()+"");
                             intent.putStringArrayListExtra("favourite", userData.getFavourite());
                             startActivity(intent);
                             finish();
@@ -157,6 +158,7 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra("name", userData.getName());
                             intent.putExtra("surname", userData.getSurname());
                             intent.putExtra("age", userData.getAge());
+                            intent.putExtra("user_id", userData.getId());
                             intent.putStringArrayListExtra("favourite", userData.getFavourite());
 
                             startActivity(intent);
