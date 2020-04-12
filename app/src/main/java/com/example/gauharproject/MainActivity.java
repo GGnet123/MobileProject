@@ -51,14 +51,17 @@ public class MainActivity extends AppCompatActivity {
     String name;
     String surname;
     String age;
+    String description;
     ArrayList<String> favourite;
     Bundle data;
     EditText edit_name;
     EditText edit_surname;
     EditText edit_age;
+    EditText edit_description;
     TextView profile_name;
     TextView profile_surname;
     TextView profile_age;
+    TextView profile_description;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         name = getIntent().getStringExtra("name");
         surname = getIntent().getStringExtra("surname");
         age = getIntent().getStringExtra("age");
+        description = getIntent().getStringExtra("description");
         favourite = getIntent().getStringArrayListExtra("favourite");
 
         data = new Bundle();
@@ -75,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         data.putString("name", name);
         data.putString("surname", surname);
         data.putString("age", age);
+        data.putString("description", description);
         data.putStringArrayList("favourite", favourite);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -112,9 +117,10 @@ public class MainActivity extends AppCompatActivity {
         return data;
     }
 
-    public void setData(String name, String surname, int age){
+    public void setData(String name, String surname, int age, String description){
         data.putString("name", name);
         data.putString("surname", surname);
+        data.putString("description", description);
         data.putInt("age", age);
     }
 
@@ -122,12 +128,12 @@ public class MainActivity extends AppCompatActivity {
         Button btn = findViewById(R.id.edit_btn);
 
         if (btn.getText().toString().equals("save")){
-            setData(edit_name.getText().toString(), edit_surname.getText().toString(), Integer.parseInt(edit_age.getText().toString()));
+            setData(edit_name.getText().toString(), edit_surname.getText().toString(), Integer.parseInt(edit_age.getText().toString()), edit_description.getText().toString());
 
             Retrofit retrofit = NetworkClient.getRetrofitClient();
             JSONPlaceHolderApi jp = retrofit.create(JSONPlaceHolderApi.class);
 
-            User user = new User(data.getString("name"), data.getString("surname"), data.getInt("age"));
+            User user = new User(data.getString("name"), data.getString("surname"), data.getInt("age"), data.getString("description"));
 
             Call<User> call = jp.editProfile(data.getInt("user_id"), user);
 
@@ -139,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                         profile_name.setText(data.getString("name"));
                         profile_surname.setText(data.getString("surname"));
                         profile_age.setText(data.getInt("age")+"");
+                        profile_description.setText(data.getString("description"));
                         ChangeView();
                     }
                 }
@@ -163,9 +170,11 @@ public class MainActivity extends AppCompatActivity {
         profile_name = findViewById(R.id.profile_name);
         profile_surname = findViewById(R.id.profile_surname);
         profile_age = findViewById(R.id.profile_age);
+        profile_description = findViewById(R.id.profile_description);
 
         edit_name = findViewById(R.id.edit_name);
         edit_surname = findViewById(R.id.edit_surname);
+        edit_description = findViewById(R.id.edit_description);
         edit_age = findViewById(R.id.edit_age);
 
         int visibilityTextView = edit_name.getVisibility();
@@ -176,9 +185,11 @@ public class MainActivity extends AppCompatActivity {
 
         profile_name.setVisibility(visibilityTextView);
         profile_surname.setVisibility(visibilityTextView);
+        profile_description.setVisibility(visibilityTextView);
         profile_age.setVisibility(visibilityTextView);
 
         edit_name.setVisibility(visibilityEditView);
+        edit_description.setVisibility(visibilityEditView);
         edit_surname.setVisibility(visibilityEditView);
         edit_age.setVisibility(visibilityEditView);
     }

@@ -8,17 +8,23 @@ public class User {
     private String password;
     private String name;
     private String surname;
+    private String description;
     private ArrayList<String> favourite;
     private int age;
 
-    public User(String name, String surname, int age) {
+    public User(String name, String surname, int age, String description) {
         this.name = name;
         this.surname = surname;
         this.age = age;
+        this.description = description;
     }
 
     public int getId() {
         return id;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public String getLogin() {

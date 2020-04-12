@@ -25,11 +25,13 @@ public class ProfileFragment extends Fragment {
     String name;
     String surname;
     String age;
+    String description;
     ArrayList<String> favourite;
 
     TextView profile_name;
     TextView profile_surname;
     TextView profile_age;
+    TextView profile_description;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -49,15 +51,18 @@ public class ProfileFragment extends Fragment {
             name = data.getString("name");
             surname = data.getString("surname");
             age = data.getString("age");
+            description = data.getString("description");
             favourite = data.getStringArrayList("favourite");
 
             profile_name = root.findViewById(R.id.profile_name);
             profile_surname = root.findViewById(R.id.profile_surname);
             profile_age = root.findViewById(R.id.profile_age);
+            profile_description = root.findViewById(R.id.profile_description);
 
             profile_name.setText(name);
             profile_surname.setText(surname);
             profile_age.setText(age);
+            profile_description.setText(description);
         }
         return root;
     }

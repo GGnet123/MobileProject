@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra("name", userData.getName());
                             intent.putExtra("surname", userData.getSurname());
                             intent.putExtra("age", userData.getAge());
+                            intent.putExtra("description", userData.getDescription());
                             intent.putExtra("user_id", userData.getId());
                             Log.d("user_id", userData.getId()+"");
                             intent.putStringArrayListExtra("favourite", userData.getFavourite());
