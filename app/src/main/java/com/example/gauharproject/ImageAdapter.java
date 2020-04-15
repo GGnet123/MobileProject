@@ -9,7 +9,8 @@ import androidx.viewpager.widget.PagerAdapter;
 
 public class ImageAdapter extends PagerAdapter {
     private Context mContext;
-    private int[] mImageIds = new int[]{R.drawable.bee, R.drawable.cello, R.drawable.lion, R.drawable.pumpkin, R.drawable.watch};
+    /// тут картинки я нашару вписал, потому что тех картинок которые здесь были написаны нет в проекте !
+    private int[] mImageIds = new int[]{R.drawable.img1, R.drawable.img2, R.drawable.img3, R.drawable.mainimage, R.drawable.news};
 
     ImageAdapter(Context context) {
         mContext = context;
