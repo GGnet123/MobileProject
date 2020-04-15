@@ -23,6 +23,111 @@
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="200dp"/>
-    </RelativeLayout>
+
+        <TextView
+            android:id="@+id/news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:text="Read now: "
+            android:textColor="#009688"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@+id/viewPager"/>
+
+        <ImageView
+            android:id="@+id/popBook"
+            android:layout_width="120dp"
+            android:layout_height="165dp"
+            android:layout_below="@+id/news"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/book" />
+
+        <TextView
+            android:id="@+id/bookTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/news"
+            android:layout_toEndOf="@+id/popBook"
+            android:text="The Lightning Thief"
+            android:textColor="#E91E63"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/bookDet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bookTxt"
+            android:layout_toEndOf="@+id/popBook"
+            android:text="@string/det"
+            android:textColor="#1C1F1D" />
+        <TextView
+            android:id="@+id/watch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:text="Watch now: "
+            android:textColor="#009688"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="1dp"
+            android:layout_below="@+id/bookDet"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:id="@+id/MovTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/watch"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="The Intern"
+            android:textColor="#3F51B5"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/MovTxt"
+            android:layout_toStartOf="@+id/popMovie"
+            android:text="@string/mov"
+            android:textColor="#161515" />
+        <ImageView
+            android:id="@+id/popMovie"
+            android:layout_width="120dp"
+            android:layout_height="165dp"
+            android:src="@drawable/movie"
+            android:layout_below="@+id/watch"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:id="@+id/like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/popMovie"
+            android:fontFamily="cursive"
+            android:text="TOP 3 Lifehacks in this week"
+            android:textColor="#F44336"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textSize="25sp"/>
+
+        <ListView
+            android:id="@+id/lifehack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/like"/>
+        </RelativeLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,5 +15,11 @@
     <string name="menu_popular">Popular requests</string>
     <string name="menu_settings">Settings</string>
     <string name="exit">Exit</string>
+    <string name="det">Twelve-year-old Percy Jackson is on the most dangerous quest of his life.
+        With the help of a satyr and a daughter of Athena, Percy must journey across the United States to catch
+        a thief who has stolen the original weapon of mass destruction — Zeus’ master bolt.</string>
+    <string name="mov">Seventy-year-old widower Ben Whittaker has discovered that retirement
+        is not it all it is cracked up to be. Seizing an opportunity to get back in the game,
+        he becomes a senior intern at an online fashion site, founded and run by Jules Ostin.</string>
 
 </resources>
