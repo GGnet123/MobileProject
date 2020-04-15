@@ -10,6 +10,7 @@ import android.os.Bundle;
 import com.example.gauharproject.db.UserDb;
 import com.example.gauharproject.retrofit.JSONPlaceHolderApi;
 import com.example.gauharproject.retrofit.NetworkClient;
+import com.example.gauharproject.retrofit.Note;
 import com.example.gauharproject.retrofit.Post;
 import com.example.gauharproject.retrofit.User;
 import com.example.gauharproject.ui.profile.ProfileFragment;
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     public Bundle getData(){
         return data;
     }
-
+    public int getToken(){ return user_id; }
     public void setData(String name, String surname, int age, String description){
         data.putString("name", name);
         data.putString("surname", surname);

@@ -1,5 +1,7 @@
 package com.example.gauharproject.retrofit;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -23,5 +25,27 @@ public interface JSONPlaceHolderApi {
     public Call<User> editProfile(
             @Header("token") int token,
             @Body User user
+    );
+
+    @POST("mobile/add-note")
+    public Call<Note> addNote(
+            @Header("token") int token,
+            @Body Note note
+    );
+
+    @POST("mobile/note-done")
+    public Call<Note> doneNote(
+            @Header("token") int token,
+            @Body Note note
+    );
+
+    @POST("mobile/delete-note")
+    public Call<Note> deleteNote(
+            @Body Note note
+    );
+
+    @GET("mobile/get-notes")
+    public Call<List<Note>> getNotes(
+            @Header("token") int token
     );
 }

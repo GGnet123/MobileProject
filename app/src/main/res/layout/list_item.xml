@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/note_text"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:textSize="30sp"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:layout_centerVertical="true"
+            android:id="@+id/note_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_toStartOf = "@+id/delete_note"/>
+        <Button
+            android:id="@+id/delete_note"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="delete"/>
+    </RelativeLayout>
+</LinearLayout>
