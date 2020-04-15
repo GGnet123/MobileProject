@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -36,20 +37,25 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class NotesFragment extends Fragment{
+public class NotesFragment extends Fragment implements ListViewAdapter.EventListener {
 
     private NotesViewModel notesViewModel;
     public HashMap<String, String> map;
     public ArrayList<HashMap<String,String>> notes = new ArrayList<>();
     public ListViewAdapter adapter;
     public ListView lv;
+    private View root;
+    private int notes_count = 0;
+    private boolean has_done = false;
+    private ListViewAdapter.EventListener callBack;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         notesViewModel =
                 ViewModelProviders.of(this).get(NotesViewModel.class);
-        final View root = inflater.inflate(R.layout.fragment_notes, container, false);
+        root = inflater.inflate(R.layout.fragment_notes, container, false);
+        callBack = this;
+
         Button add = root.findViewById(R.id.note_add_btn);
-        CheckBox done = root.findViewById(R.id.note_done);
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +63,8 @@ public class NotesFragment extends Fragment{
                 addNote(root);
             }
         });
-        getNotes(root);
+        getNotes();
+
         final TextView textView = root.findViewById(R.id.text_notes);
         notesViewModel.getText().observe(this, new Observer<String>() {
             @Override
@@ -66,30 +73,6 @@ public class NotesFragment extends Fragment{
             }
         });
         return root;
-    }
-
-    public void getNotes(final View root){
-        Retrofit retrofit = NetworkClient.getRetrofitClient();
-        JSONPlaceHolderApi jp = retrofit.create(JSONPlaceHolderApi.class);
-
-        Call<List<Note>> call = jp.getNotes(((MainActivity)getActivity()).getToken());
-        call.enqueue(new Callback<List<Note>>() {
-            @Override
-            public void onResponse(Call<List<Note>> call, Response<List<Note>> response) {
-                List<Note> notesList = response.body();
-                if(notesList.size()>0){
-                    Log.d("asdasd",notesList.get(0).isDone()+"");
-                    adapter = new ListViewAdapter(getActivity(), notesList);
-                    lv = root.findViewById(R.id.notes_list);
-                    lv.setAdapter(adapter);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Note>> call, Throwable t) {
-
-            }
-        });
     }
 
     public void addNote(final View view){
@@ -102,11 +85,40 @@ public class NotesFragment extends Fragment{
             @Override
             public void onResponse(Call<Note> call, Response<Note> response) {
                 if (response.isSuccessful()){
-                    getNotes(view);
+                    getNotes();
+                } else {
+                    Log.d("sometest", "here");
+                    Toast.makeText(((MainActivity)getContext()),"Too many notes. Finish something!", Toast.LENGTH_LONG).show();
                 }
             }
             @Override
             public void onFailure(Call<Note> call, Throwable t) { }
+        });
+    }
+
+    @Override
+    public void getNotes() {
+        Retrofit retrofit = NetworkClient.getRetrofitClient();
+        JSONPlaceHolderApi jp = retrofit.create(JSONPlaceHolderApi.class);
+
+        Call<List<Note>> call = jp.getNotes(((MainActivity)getActivity()).getToken());
+        call.enqueue(new Callback<List<Note>>() {
+            @Override
+            public void onResponse(Call<List<Note>> call, Response<List<Note>> response) {
+                List<Note> notesList = response.body();
+                if(notesList.size()>0){
+                    notes_count = notesList.size();
+                    Log.d("asdasd",notesList.get(0).isDone()+"");
+                    adapter = new ListViewAdapter(getActivity(), notesList, callBack);
+                    lv = root.findViewById(R.id.notes_list);
+                    lv.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Note>> call, Throwable t) {
+
+            }
         });
     }
 }

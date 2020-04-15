@@ -3,6 +3,7 @@ package com.example.gauharproject;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,13 +32,20 @@ public class ListViewAdapter extends BaseAdapter {
     private Activity activity;
     private List<Note> data;
     private static LayoutInflater inflater=null;
-
+    EventListener mCallBack;
     TextView note;
     CheckBox done;
-    public ListViewAdapter(Activity a, List<Note> d) {
+
+
+    public ListViewAdapter(Activity a, List<Note> d, EventListener callBack) {
         activity = a;
+        mCallBack = callBack;
         data = d;
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    public interface EventListener{
+        void getNotes();
     }
 
     public int getCount() {
@@ -72,13 +80,7 @@ public class ListViewAdapter extends BaseAdapter {
         }
 
         final int isDone = item.isDone();
-        Button delete = vi.findViewById(R.id.delete_note);
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteNote(id, vi2);
-            }
-        });
+
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,26 +88,6 @@ public class ListViewAdapter extends BaseAdapter {
             }
         });
         return vi;
-    }
-
-    public void deleteNote(int id, final View view){
-        Retrofit retrofit = NetworkClient.getRetrofitClient();
-        JSONPlaceHolderApi jp = retrofit.create(JSONPlaceHolderApi.class);
-        Note note = new Note(id,"", 0);
-        Call<Note> call = jp.deleteNote(note);
-        call.enqueue(new Callback<Note>() {
-            @Override
-            public void onResponse(Call<Note> call, Response<Note> response) {
-                if (response.isSuccessful()){
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Note> call, Throwable t) {
-
-            }
-        });
     }
 
     public void toggleDone(int id, int done, final View vi){
