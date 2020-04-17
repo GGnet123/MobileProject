@@ -11,11 +11,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gauharproject.retrofit.CategoryContent;
+import com.example.gauharproject.retrofit.JSONPlaceHolderApi;
 import com.example.gauharproject.retrofit.NetworkClient;
 import com.example.gauharproject.retrofit.Note;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class CategoryViewAdapter extends BaseAdapter {
 
@@ -52,12 +58,34 @@ public class CategoryViewAdapter extends BaseAdapter {
         ImageView img = vi.findViewById(R.id.itemImg);
         TextView title = vi.findViewById(R.id.itemTitle);
         TextView desc = vi.findViewById(R.id.itemDesc);
-        CategoryContent item = data.get(position);
+        final CategoryContent item = data.get(position);
 
         title.setText(item.getTitle());
         Log.d("asddsa",item.getTitle());
         desc.setText(item.getShort_description());
         Picasso.get().load(NetworkClient.BASE_URL + item.getImage()).into(img);
+
+        ImageView like = vi.findViewById(R.id.like);
+        like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Retrofit retrofit = NetworkClient.getRetrofitClient();
+                JSONPlaceHolderApi jp = retrofit.create(JSONPlaceHolderApi.class);
+                Note like = new Note(item.getId(), "", 1);
+                Call<Note> call = jp.doneNote(((MainActivity)activity).getToken(), like);
+                call.enqueue(new Callback<Note>() {
+                    @Override
+                    public void onResponse(Call<Note> call, Response<Note> response) {
+                    }
+
+                    @Override
+                    public void onFailure(Call<Note> call, Throwable t) {
+                    }
+                });
+            }
+        });
         return vi;
     }
+
+
 }

@@ -52,4 +52,9 @@ public interface JSONPlaceHolderApi {
     public Call<List<CategoryContent>> getContent(
             @Query("id") int id
     );
+    @POST("mobile/like")
+    public Call<Note> like(
+            @Header("token") int token,
+            @Body Note like
+    );
 }
