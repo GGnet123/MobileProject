@@ -18,15 +18,20 @@
             android:id="@+id/edit_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="edit"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="#E46993"
+            android:fontFamily="casual"
             android:onClick="Edit"
-            android:layout_alignParentRight="true"/>
+            android:text="edit"
+            android:textSize="18sp"
+            android:textStyle="bold|italic" />
         <LinearLayout
             android:id="@+id/l1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:layout_marginTop="50dp">
             <ImageView
                 android:id="@+id/profile_img"
                 android:layout_below="@+id/text_profile"
@@ -41,59 +46,99 @@
                 android:orientation="vertical"
                 android:layout_below="@+id/profile_img"
                 android:layout_marginTop="10dp">
+
                 <EditText
                     android:id="@+id/edit_name"
-                    android:visibility="gone"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"/>
+                    android:layout_margin="5dp"
+                    android:fontFamily="cursive"
+                    android:textColor="#9C27B0"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
                 <TextView
                     android:id="@+id/profile_name"
-                    android:text="Your name"
-                    android:layout_margin="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"/>
+                    android:layout_margin="5dp"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="cursive"
+                    android:text="Your name"
+                    android:textColor="#9C27B0"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
                 <EditText
                     android:id="@+id/edit_surname"
-                    android:visibility="gone"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"/>
-                <TextView
-                    android:text="Your surname"
                     android:layout_margin="5dp"
+                    android:fontFamily="cursive"
+                    android:textColor="#9C27B0"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <TextView
                     android:id="@+id/profile_surname"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="cursive"
+                    android:text="Your surname"
+                    android:textColor="#9C27B0"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
                 <EditText
                     android:id="@+id/edit_age"
-                    android:visibility="gone"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"/>
+                    android:layout_margin="5dp"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:textColor="#3F51B5"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic"
+                    android:visibility="gone" />
+
                 <TextView
                     android:id="@+id/profile_age"
-                    android:layout_margin="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Your age" />
+                    android:layout_margin="5dp"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:text="Your age"
+                    android:textColor="#3F51B5"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic" />
             </LinearLayout>
         </LinearLayout>
+
         <EditText
             android:id="@+id/edit_description"
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/l1"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/profile_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/l1"
             android:layout_centerHorizontal="true"
-            android:text="About yourself, hobbies, personality..."/>
+            android:layout_marginBottom="20dp"
+            android:text="About yourself, hobbies, personality..."
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold|italic" />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
