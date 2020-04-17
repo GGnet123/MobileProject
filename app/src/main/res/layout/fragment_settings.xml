@@ -26,12 +26,35 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/exitBtn"
-                android:onClick="exit"
+            <TextView
+                android:id="@+id/settings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Settings"
+                android:fontFamily="cursive"
+                android:textSize="35dp"
+                android:textStyle="bold"
                 android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30dp"/>
+
+            <Button
+                android:id="@+id/backgroundTheme"
+                android:layout_width="369dp"
+                android:layout_height="70dp"
+                android:layout_below="@+id/settings"
+                android:layout_marginLeft="20dp"
+                android:backgroundTint="#E75785"
+                android:layout_marginBottom="20dp"
+                android:text="Theme" />
+
+            <Button
+                android:id="@+id/exitBtn"
+                android:layout_width="369dp"
+                android:layout_height="70dp"
+                android:layout_below="@+id/backgroundTheme"
+                android:layout_marginLeft="20dp"
+                android:backgroundTint="#81E085"
+                android:onClick="exit"
                 android:text="Exit" />
         </RelativeLayout>
     </LinearLayout>
