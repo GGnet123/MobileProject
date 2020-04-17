@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra("description", userData.getDescription());
                             intent.putExtra("user_id", userData.getId());
                             Log.d("user_id", userData.getId()+"");
-                            intent.putStringArrayListExtra("favourite", userData.getFavourite());
+                            intent.putExtra("favourite", userData.getFavourite());
                             startActivity(intent);
                             finish();
                         } else {
@@ -160,7 +160,7 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra("surname", userData.getSurname());
                             intent.putExtra("age", userData.getAge());
                             intent.putExtra("user_id", userData.getId());
-                            intent.putStringArrayListExtra("favourite", userData.getFavourite());
+                            intent.putExtra("favourite", userData.getFavourite());
 
                             startActivity(intent);
                             finish();

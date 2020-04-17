@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     String surname;
     String age;
     String description;
-    ArrayList<String> favourite;
+    String favourite;
     Bundle data;
     EditText edit_name;
     EditText edit_surname;
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         surname = getIntent().getStringExtra("surname");
         age = getIntent().getStringExtra("age");
         description = getIntent().getStringExtra("description");
-        favourite = getIntent().getStringArrayListExtra("favourite");
+        favourite = getIntent().getStringExtra("favourite");
 
         data = new Bundle();
         data.putInt("user_id", user_id);
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         data.putString("surname", surname);
         data.putString("age", age);
         data.putString("description", description);
-        data.putStringArrayList("favourite", favourite);
+        data.putString("favourite", favourite);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

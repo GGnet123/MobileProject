@@ -72,7 +72,7 @@ public class CategoryViewAdapter extends BaseAdapter {
                 Retrofit retrofit = NetworkClient.getRetrofitClient();
                 JSONPlaceHolderApi jp = retrofit.create(JSONPlaceHolderApi.class);
                 Note like = new Note(item.getId(), "", 1);
-                Call<Note> call = jp.doneNote(((MainActivity)activity).getToken(), like);
+                Call<Note> call = jp.like(((MainActivity)activity).getToken(), like);
                 call.enqueue(new Callback<Note>() {
                     @Override
                     public void onResponse(Call<Note> call, Response<Note> response) {
