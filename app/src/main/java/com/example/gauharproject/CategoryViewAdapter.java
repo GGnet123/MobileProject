@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gauharproject.retrofit.CategoryContent;
 import com.example.gauharproject.retrofit.JSONPlaceHolderApi;
@@ -28,8 +29,11 @@ public class CategoryViewAdapter extends BaseAdapter {
     private Activity activity;
     private List<CategoryContent> data;
     private static LayoutInflater inflater=null;
-
-    public CategoryViewAdapter(Activity a, List<CategoryContent> d) {
+    private int token;
+    private boolean inFav;
+    public CategoryViewAdapter(Activity a, List<CategoryContent> d, int user_id, boolean isFav) {
+        inFav = isFav;
+        token = user_id;
         activity = a;
         data = d;
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -72,7 +76,8 @@ public class CategoryViewAdapter extends BaseAdapter {
                 Retrofit retrofit = NetworkClient.getRetrofitClient();
                 JSONPlaceHolderApi jp = retrofit.create(JSONPlaceHolderApi.class);
                 Note like = new Note(item.getId(), "", 1);
-                Call<Note> call = jp.like(((MainActivity)activity).getToken(), like);
+                Call<Note> call = jp.like(token, like);
+                Toast.makeText(((CategoryActivity)activity).getApplicationContext(), "Added to favourite", Toast.LENGTH_SHORT).show();
                 call.enqueue(new Callback<Note>() {
                     @Override
                     public void onResponse(Call<Note> call, Response<Note> response) {
@@ -84,6 +89,9 @@ public class CategoryViewAdapter extends BaseAdapter {
                 });
             }
         });
+        if (inFav){
+            like.setVisibility(View.GONE);
+        }
         return vi;
     }
 

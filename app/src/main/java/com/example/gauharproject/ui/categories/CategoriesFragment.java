@@ -58,6 +58,7 @@ public class CategoriesFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent((MainActivity)getContext(), CategoryActivity.class);
                 intent.putExtra("category", 1);
+                intent.putExtra("token", ((MainActivity)getActivity()).getToken());
                 startActivity(intent);
             }
         });
@@ -66,6 +67,7 @@ public class CategoriesFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent((MainActivity)getContext(), CategoryActivity.class);
                 intent.putExtra("category", 2);
+                intent.putExtra("token", ((MainActivity)getActivity()).getToken());
                 startActivity(intent);
             }
         });
@@ -74,6 +76,7 @@ public class CategoriesFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent((MainActivity)getContext(), CategoryActivity.class);
                 intent.putExtra("category", 3);
+                intent.putExtra("token", ((MainActivity)getActivity()).getToken());
                 startActivity(intent);
             }
         });
@@ -82,6 +85,7 @@ public class CategoriesFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent((MainActivity)getContext(), CategoryActivity.class);
                 intent.putExtra("category", 4);
+                intent.putExtra("token", ((MainActivity)getActivity()).getToken());
                 startActivity(intent);
             }
         });
@@ -90,6 +94,7 @@ public class CategoriesFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent((MainActivity)getContext(), CategoryActivity.class);
                 intent.putExtra("category", 5);
+                intent.putExtra("token", ((MainActivity)getActivity()).getToken());
                 startActivity(intent);
             }
         });
@@ -98,6 +103,7 @@ public class CategoriesFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent((MainActivity)getContext(), CategoryActivity.class);
                 intent.putExtra("category", 6);
+                intent.putExtra("token", ((MainActivity)getActivity()).getToken());
                 startActivity(intent);
             }
         });

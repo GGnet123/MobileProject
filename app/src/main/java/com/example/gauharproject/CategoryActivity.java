@@ -22,7 +22,7 @@ import retrofit2.Retrofit;
 public class CategoryActivity extends AppCompatActivity {
     CategoryViewAdapter categoryViewAdapter;
     ListView lv;
-
+    int token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +30,7 @@ public class CategoryActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int id = intent.getIntExtra("category", 0);
+        token = intent.getIntExtra("token", 0);
 
         lv = findViewById(R.id.listCat);
 
@@ -40,7 +41,7 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<CategoryContent>> call, Response<List<CategoryContent>> response) {
                 Log.d("isok", "here");
-                categoryViewAdapter = new CategoryViewAdapter(CategoryActivity.this, response.body());
+                categoryViewAdapter = new CategoryViewAdapter(CategoryActivity.this, response.body(), token, false);
                 lv.setAdapter(categoryViewAdapter);
 
             }
