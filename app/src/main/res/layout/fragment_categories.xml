@@ -13,7 +13,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,22 +25,13 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="cursive"
-            android:text="Categories: "
-            android:textAlignment="center"
-            android:textSize="36sp"
-            android:textStyle="bold" />
-
-        <TextView
             android:id="@+id/cat1"
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
             android:background="#F0DF59"
             android:fontFamily="sans-serif-smallcaps"
             android:paddingLeft="10dp"
@@ -49,9 +43,7 @@
             android:id="@+id/cat2"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_margin="10dp"
             android:background="#E179F0"
             android:fontFamily="sans-serif-smallcaps"
             android:paddingLeft="10dp"
@@ -63,9 +55,7 @@
             android:id="@+id/cat3"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_margin="10dp"
             android:background="#8CB5EC"
             android:fontFamily="sans-serif-smallcaps"
             android:paddingLeft="10dp"
@@ -77,9 +67,7 @@
             android:id="@+id/cat4"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_margin="10dp"
             android:background="#8BC34A"
             android:fontFamily="sans-serif-smallcaps"
             android:paddingLeft="10dp"
@@ -91,9 +79,7 @@
             android:id="@+id/cat5"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_margin="10dp"
             android:background="#F78C88"
             android:fontFamily="sans-serif-smallcaps"
             android:paddingLeft="10dp"
@@ -105,9 +91,7 @@
             android:id="@+id/cat6"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_margin="10dp"
             android:background="#9DBCF5"
             android:fontFamily="sans-serif-smallcaps"
             android:paddingLeft="10dp"
@@ -115,4 +99,5 @@
             android:textColor="#9C27B0"
             android:textSize="24sp" />
     </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

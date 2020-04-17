@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/itemImg"
+    <RelativeLayout
+        android:id="@+id/images"
         android:layout_width="160dp"
-        android:layout_height="250dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_height="250dp">
+        <ImageView
+            android:id="@+id/itemImg"
+            android:layout_width="160dp"
+            android:layout_height="250dp"
+            android:layout_marginLeft="10dp"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/like"
+            android:padding="10dp"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/itemTitle"
@@ -14,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_toEndOf="@+id/itemImg"
+        android:layout_toEndOf="@+id/images"
         android:fontFamily="sans-serif-smallcaps"
         android:textColor="#4CAF50"
         android:textSize="25dp"
@@ -26,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/itemTitle"
         android:layout_marginLeft="10dp"
-        android:layout_toEndOf="@+id/itemImg"
+        android:layout_toEndOf="@+id/images"
         android:fontFamily="sans-serif-smallcaps"
         android:textSize="18sp" />
 </RelativeLayout>
