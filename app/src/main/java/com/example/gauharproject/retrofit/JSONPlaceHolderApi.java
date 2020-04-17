@@ -48,4 +48,8 @@ public interface JSONPlaceHolderApi {
     public Call<List<Note>> getNotes(
             @Header("token") int token
     );
+    @GET("mobile/get-category-item")
+    public Call<List<CategoryContent>> getContent(
+            @Query("id") int id
+    );
 }
