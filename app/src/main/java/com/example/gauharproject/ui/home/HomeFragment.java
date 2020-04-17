@@ -1,12 +1,15 @@
 package com.example.gauharproject.ui.home;
 
 
+import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -27,6 +30,8 @@ public class HomeFragment extends Fragment {
     MediaPlayer mediaPlayer2;
     Button btn1;
     Button btn2;
+    ImageView img1;
+    ImageView img2;
     int cnt = 1;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -46,6 +51,30 @@ public class HomeFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        img1 = root.findViewById(R.id.blogImg);
+        img2 = root.findViewById(R.id.blogImg2);
+
+        img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent viewIntent =
+                        new Intent("android.intent.action.VIEW",
+                                Uri.parse("https://www.lifehack.org/articles/lifestyle/100-life-hacks-that-make-life-easier.html"));
+                startActivity(viewIntent);
+            }
+        });
+
+        img2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent viewIntent =
+                        new Intent("android.intent.action.VIEW",
+                                Uri.parse("https://www.rbc.ru/trends/education/5e727a799a79475f8748651"));
+                startActivity(viewIntent);
+            }
+        });
+
         mediaPlayer = MediaPlayer.create((MainActivity)getContext(), R.raw.first);
         mediaPlayer2 = MediaPlayer.create((MainActivity)getContext(), R.raw.second);
         btn1 = root.findViewById(R.id.play_music);
