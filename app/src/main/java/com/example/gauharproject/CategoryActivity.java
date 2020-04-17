@@ -43,10 +43,7 @@ public class CategoryActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<CategoryContent>> call, Throwable t) {
-
-
-            }
+            public void onFailure(Call<List<CategoryContent>> call, Throwable t) { }
         });
     }
 }

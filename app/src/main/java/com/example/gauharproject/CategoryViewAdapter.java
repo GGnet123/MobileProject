@@ -10,7 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gauharproject.retrofit.CategoryContent;
+import com.example.gauharproject.retrofit.NetworkClient;
 import com.example.gauharproject.retrofit.Note;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -52,6 +54,7 @@ public class CategoryViewAdapter extends BaseAdapter {
         CategoryContent item = data.get(position);
         title.setText(item.getTitle());
         desc.setText(item.getShort_description());
+        Picasso.get().load(NetworkClient.BASE_URL + item.getImage()).into(img);
         return vi;
     }
 }
