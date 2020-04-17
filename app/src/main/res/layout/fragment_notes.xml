@@ -19,13 +19,13 @@
             android:id="@+id/edit_text_notes"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginRight="2dp"/>
+            android:layout_alignParentStart="true" />
         <Button
             android:id="@+id/note_add_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="add"
+            android:layout_marginStart="3dp"
             android:layout_toRightOf="@+id/edit_text_notes"/>
         <ListView
             android:id="@+id/notes_list"
