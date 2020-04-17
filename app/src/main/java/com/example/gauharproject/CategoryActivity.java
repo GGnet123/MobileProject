@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.example.gauharproject.retrofit.CategoryContent;
@@ -38,8 +39,10 @@ public class CategoryActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<CategoryContent>>() {
             @Override
             public void onResponse(Call<List<CategoryContent>> call, Response<List<CategoryContent>> response) {
+                Log.d("isok", "here");
                 categoryViewAdapter = new CategoryViewAdapter(CategoryActivity.this, response.body());
                 lv.setAdapter(categoryViewAdapter);
+
             }
 
             @Override

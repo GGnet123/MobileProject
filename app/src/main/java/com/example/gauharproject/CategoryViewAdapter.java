@@ -2,6 +2,7 @@ package com.example.gauharproject;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,17 +31,17 @@ public class CategoryViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return data.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return position;
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
@@ -52,7 +53,9 @@ public class CategoryViewAdapter extends BaseAdapter {
         TextView title = vi.findViewById(R.id.itemTitle);
         TextView desc = vi.findViewById(R.id.itemDesc);
         CategoryContent item = data.get(position);
+
         title.setText(item.getTitle());
+        Log.d("asddsa",item.getTitle());
         desc.setText(item.getShort_description());
         Picasso.get().load(NetworkClient.BASE_URL + item.getImage()).into(img);
         return vi;
