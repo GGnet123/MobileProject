@@ -38,25 +38,14 @@
                 android:layout_marginBottom="30dp"/>
 
             <Button
-                android:id="@+id/backgroundTheme"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_below="@+id/settings"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
-                android:backgroundTint="#E75785"
-                android:text="Theme" />
-
-            <Button
                 android:id="@+id/exitBtn"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:layout_below="@+id/backgroundTheme"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:backgroundTint="#81E085"
                 android:onClick="exit"
+                android:layout_below="@+id/settings"
                 android:text="Exit" />
         </RelativeLayout>
     </LinearLayout>
