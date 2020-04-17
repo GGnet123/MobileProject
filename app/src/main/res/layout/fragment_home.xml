@@ -116,18 +116,28 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/popMovie"
                 android:fontFamily="cursive"
-                android:text="TOP 3 Lifehacks in this week"
+                android:text="Our blog"
                 android:textColor="#F44336"
                 android:textStyle="bold"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:textSize="25sp"/>
-
-            <ListView
-                android:id="@+id/lifehack"
+            <ImageView
+                android:id="@+id/blogImg"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/like"/>
+                android:layout_height="200dp"
+                android:layout_below="@+id/like"
+                android:src="@drawable/blog1"
+                android:layout_marginBottom="10dp"
+               />
+            <ImageView
+                android:id="@+id/blogImg2"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_below="@+id/blogImg"
+                android:src="@drawable/blog2"
+                />
+
         </RelativeLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

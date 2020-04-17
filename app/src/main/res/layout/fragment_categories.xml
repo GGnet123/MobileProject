@@ -8,28 +8,111 @@
         android:id="@+id/text_categories"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="0sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#A993CE"
+        android:backgroundTint="#DEEC99"
+        android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/categoryList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="cursive"
+            android:text="Categories: "
+            android:textAlignment="center"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/cat1"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#F0DF59"
+            android:fontFamily="sans-serif-smallcaps"
+            android:paddingLeft="10dp"
+            android:text="Books"
+            android:textColor="#9C27B0"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/cat2"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#E179F0"
+            android:fontFamily="sans-serif-smallcaps"
+            android:paddingLeft="10dp"
+            android:text="Movies"
+            android:textColor="#9C27B0"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/cat3"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#8CB5EC"
+            android:fontFamily="sans-serif-smallcaps"
+            android:paddingLeft="10dp"
+            android:text="Cooking"
+            android:textColor="#9C27B0"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/cat4"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#8BC34A"
+            android:fontFamily="sans-serif-smallcaps"
+            android:paddingLeft="10dp"
+            android:text="Sport"
+            android:textColor="#9C27B0"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/cat5"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#F78C88"
+            android:fontFamily="sans-serif-smallcaps"
+            android:paddingLeft="10dp"
+            android:text="Design and Fashion"
+            android:textColor="#9C27B0"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/cat6"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#9DBCF5"
+            android:fontFamily="sans-serif-smallcaps"
+            android:paddingLeft="10dp"
+            android:text="Travelling"
+            android:textColor="#9C27B0"
+            android:textSize="24sp" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
