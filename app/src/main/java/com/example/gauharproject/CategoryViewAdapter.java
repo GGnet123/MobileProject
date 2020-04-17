@@ -65,7 +65,7 @@ public class CategoryViewAdapter extends BaseAdapter {
         desc.setText(item.getShort_description());
         Picasso.get().load(NetworkClient.BASE_URL + item.getImage()).into(img);
 
-        ImageView like = vi.findViewById(R.id.like);
+        ImageView like = vi.findViewById(R.id.category_like);
         like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
