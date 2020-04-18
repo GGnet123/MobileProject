@@ -1,6 +1,5 @@
 package com.example.gauharproject.ui.home;
 
-
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
