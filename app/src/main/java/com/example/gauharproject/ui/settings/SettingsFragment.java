@@ -2,12 +2,14 @@ package com.example.gauharproject.ui.settings;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -24,7 +26,9 @@ import com.example.gauharproject.db.UserDb;
 public class SettingsFragment extends Fragment {
 
     private SettingsViewModel sendViewModel;
-
+    private LinearLayout layout;
+    private String[] colors = {"#FAEBD7","#00FFFF","#7FFF00","#D2691E","#6495ED","#556B2F","#FFFAF0", "#FFB6C1"};
+    private int i = 0;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         sendViewModel =
@@ -40,6 +44,17 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        layout = root.findViewById(R.id.settings_background);
+        layout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                layout.setBackgroundColor(Color.parseColor(colors[i]));
+                if (i < 7){
+                    i++;
+                } else { i = 0; }
+                return true;
+            }
+        });
 
         return root;
     }
