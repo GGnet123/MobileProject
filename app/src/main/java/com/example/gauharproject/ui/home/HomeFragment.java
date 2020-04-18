@@ -1,6 +1,7 @@
 package com.example.gauharproject.ui.home;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -32,6 +34,9 @@ public class HomeFragment extends Fragment {
     ImageView img1;
     ImageView img2;
     int cnt = 1;
+    ConstraintLayout constraintLayout;
+    private String[] colors = {"#FAEBD7","#00FFFF","#7FFF00","#D2691E","#6495ED","#556B2F","#FFFAF0", "#FFB6C1"};
+    private int i = 0;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -96,6 +101,18 @@ public class HomeFragment extends Fragment {
                 } else {
                     mediaPlayer2.start();
                 }
+            }
+        });
+
+        constraintLayout = root.findViewById(R.id.home_page);
+        constraintLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                constraintLayout.setBackgroundColor(Color.parseColor(colors[i]));
+                if (i < 7){
+                    i++;
+                } else { i = 0; }
+                return true;
             }
         });
 
