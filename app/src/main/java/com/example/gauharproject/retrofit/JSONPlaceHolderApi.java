@@ -39,6 +39,12 @@ public interface JSONPlaceHolderApi {
             @Body Note note
     );
 
+    @POST("mobile/remove-fav")
+    public Call<Note> removeFav(
+            @Header("token") int token,
+            @Body Note note
+    );
+
     @POST("mobile/delete-note")
     public Call<Note> deleteNote(
             @Body Note note

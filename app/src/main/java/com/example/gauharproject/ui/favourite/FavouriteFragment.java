@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ import com.example.gauharproject.R;
 import com.example.gauharproject.retrofit.CategoryContent;
 import com.example.gauharproject.retrofit.JSONPlaceHolderApi;
 import com.example.gauharproject.retrofit.NetworkClient;
+import com.example.gauharproject.retrofit.Note;
 
 import java.util.List;
 
@@ -33,6 +35,8 @@ public class FavouriteFragment extends Fragment {
     private Bundle data;
     private ListView lv;
     private CategoryViewAdapter adapter;
+    JSONPlaceHolderApi jp;
+    List<CategoryContent> favs;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         favouriteViewModel =
@@ -42,19 +46,25 @@ public class FavouriteFragment extends Fragment {
         data = ((MainActivity)getActivity()).getData();
         lv = root.findViewById(R.id.fav_list);
 
-        Retrofit retrofit = NetworkClient.getRetrofitClient();
-        JSONPlaceHolderApi jp = retrofit.create(JSONPlaceHolderApi.class);
-        Call<List<CategoryContent>> call = jp.getFavourite(((MainActivity)getActivity()).getToken());
-        call.enqueue(new Callback<List<CategoryContent>>() {
-            @Override
-            public void onResponse(Call<List<CategoryContent>> call, Response<List<CategoryContent>> response) {
-                adapter = new CategoryViewAdapter((MainActivity)getContext(),response.body(),1,true);
-                lv.setAdapter(adapter);
-            }
+        getFav();
 
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onFailure(Call<List<CategoryContent>> call, Throwable t) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Note fav = new Note(favs.get(position).getId(),"",0);
+                Call call = jp.removeFav(((MainActivity)getActivity()).getToken(), fav);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onResponse(Call call, Response response) {
+                        getFav();
+                    }
 
+                    @Override
+                    public void onFailure(Call call, Throwable t) {
+
+                    }
+                });
+                return true;
             }
         });
 
@@ -66,5 +76,26 @@ public class FavouriteFragment extends Fragment {
             }
         });
         return root;
+    }
+
+    public void getFav(){
+        Retrofit retrofit = NetworkClient.getRetrofitClient();
+        jp = retrofit.create(JSONPlaceHolderApi.class);
+        Call<List<CategoryContent>> call = jp.getFavourite(((MainActivity)getActivity()).getToken());
+        call.enqueue(new Callback<List<CategoryContent>>() {
+            @Override
+            public void onResponse(Call<List<CategoryContent>> call, final Response<List<CategoryContent>> response) {
+                favs = response.body();
+                adapter = new CategoryViewAdapter((MainActivity)getContext(),favs,1,true);
+                lv.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onFailure(Call<List<CategoryContent>> call, Throwable t) {
+
+            }
+        });
+
     }
 }
