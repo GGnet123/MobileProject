@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -35,6 +37,7 @@ public class HomeFragment extends Fragment {
     ImageView img2;
     int cnt = 1;
     ConstraintLayout constraintLayout;
+    RelativeLayout relativeLayout;
     private String[] colors = {"#FAEBD7","#00FFFF","#7FFF00","#D2691E","#6495ED","#556B2F","#FFFAF0", "#FFB6C1"};
     private int i = 0;
 
@@ -105,7 +108,8 @@ public class HomeFragment extends Fragment {
         });
 
         constraintLayout = root.findViewById(R.id.home_page);
-        constraintLayout.setOnLongClickListener(new View.OnLongClickListener() {
+        relativeLayout = root.findViewById(R.id.home_all);
+        relativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 constraintLayout.setBackgroundColor(Color.parseColor(colors[i]));
