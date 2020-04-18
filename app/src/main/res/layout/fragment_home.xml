@@ -138,6 +138,41 @@
                 android:src="@drawable/blog2"
                 />
 
+            <TextView
+                android:id="@+id/music_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Latest musics"
+                android:fontFamily="cursive"
+                android:textColor="#F44336"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:textSize="25sp"
+                android:layout_below="@+id/blogImg2"/>
+
+            <Button
+                android:id="@+id/play_music"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/music_title"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="#B2E27A"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Listen now"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/play_second"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/play_music"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="#B2E27A"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Listen now"
+                android:textAlignment="center" />
+
         </RelativeLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,12 @@
 package com.example.gauharproject.ui.home;
 
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -21,6 +23,11 @@ import com.example.gauharproject.R;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+    MediaPlayer mediaPlayer;
+    MediaPlayer mediaPlayer2;
+    Button btn1;
+    Button btn2;
+    int cnt = 1;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -39,6 +46,31 @@ public class HomeFragment extends Fragment {
                 textView.setText(s);
             }
         });
+        mediaPlayer = MediaPlayer.create((MainActivity)getContext(), R.raw.first);
+        mediaPlayer2 = MediaPlayer.create((MainActivity)getContext(), R.raw.second);
+        btn1 = root.findViewById(R.id.play_music);
+        btn2 = root.findViewById(R.id.play_second);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.pause();
+                } else {
+                    mediaPlayer.start();
+                }
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mediaPlayer2.isPlaying()) {
+                    mediaPlayer2.pause();
+                } else {
+                    mediaPlayer2.start();
+                }
+            }
+        });
+
         return root;
     }
 }
