@@ -59,14 +59,16 @@ public class CategoryViewAdapter extends BaseAdapter {
         View vi = convertView;
         if(convertView==null)
             vi = inflater.inflate(R.layout.category_activity_item, null);
+
         ImageView img = vi.findViewById(R.id.itemImg);
         TextView title = vi.findViewById(R.id.itemTitle);
         TextView desc = vi.findViewById(R.id.itemDesc);
+
         final CategoryContent item = data.get(position);
 
         title.setText(item.getTitle());
-        Log.d("asddsa",item.getTitle());
         desc.setText(item.getShort_description());
+
         Picasso.get().load(NetworkClient.BASE_URL + item.getImage()).into(img);
 
         ImageView like = vi.findViewById(R.id.category_like);
@@ -89,6 +91,7 @@ public class CategoryViewAdapter extends BaseAdapter {
                 });
             }
         });
+
         if (inFav){
             like.setVisibility(View.GONE);
         }

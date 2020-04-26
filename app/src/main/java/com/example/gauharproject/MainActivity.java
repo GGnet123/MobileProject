@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         data.putInt("age", age);
     }
 
+    //// Profile
     public void Edit(View view){
         Button btn = findViewById(R.id.edit_btn);
 
@@ -160,7 +161,6 @@ public class MainActivity extends AppCompatActivity {
             btn.setText("save");
         }
     }
-
     private void ChangeView(){
         profile_name = findViewById(R.id.profile_name);
         profile_surname = findViewById(R.id.profile_surname);
@@ -207,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
         new logOut().execute();
     }
 
+
+    /// Settings
     public void reset(View view){
         PrefManager manager = new PrefManager(getApplicationContext());
         manager.setFirstTimeLaunch(true);
